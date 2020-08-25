@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:time_formatter/time_formatter.dart';
+
+import 'package:weather_app/Constant.dart';
 
 class Weather {
   var temp;
@@ -10,8 +11,7 @@ class Weather {
   var sunSet;
 
   Future<void> getWeather({lat: double, lon: double}) async{
-    var appid='XXXXX';
-    var url = 'https://api.openweathermap.org/data/2.5/weather?units=metric&lat=$lat&lon=$lon&APPID=$appid';
+    var url = 'https://api.openweathermap.org/data/2.5/weather?units=metric&lat=$lat&lon=$lon&APPID=$Constant.WEATHER_APP_ID';
     print('url $url');
     var response = await http.get(url);
     if (response.statusCode==200){
